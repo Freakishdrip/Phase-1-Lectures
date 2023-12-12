@@ -1,10 +1,10 @@
 //BookStore data
 const bookStore = {
     location: "Seattle",
-    address:'333 st ne Seattle wa 99999',
+    address:' 333 st ne Seattle wa 99999',
     number: 9999999999,
-    name: 'Easley\'s Technical Books',
-    hours: 'Monday - Friday 9am - 6pm',
+    name: 'Easley\'s Technical Books ',
+    hours: ' Monday - Friday 9am - 6pm',
     inventory: [
         {
             id:1,
@@ -76,9 +76,78 @@ const bookStore = {
     ]
   }
 
+console.log(document.querySelector("div"));
+console.log(document.querySelector(".secondDiv"));
+console.log(document.querySelector("#book-list"));
+console.log(document.querySelectorAll("div")); //returns a list of ALL the nodes
 
+const h1 = document.querySelector("h1")
+h1.textContent = "Welcome to the bookstore";
+h1.innerText = "Flatiron bookstore";
 
+// const newDiv = document.createElement("div")
+// newDiv.innerHTML = `
+// <p>This is a new Div</p>
+// `
+// body.append(newDiv);
+
+function renderHeader(){
+    return document.querySelector("h1").textContent = bookStore.name
+}
+renderHeader()
+function renderFooter(){
+    const footers = document.querySelectorAll('footer div')
+    console.log(footers)
+    footers[0].textContent = bookStore.name
+    footers[1].textContent = bookStore.address
+    footers[2].textContent = bookStore.hours
+}
+renderFooter()
+const book_list = document.querySelector('#book-list')
+// bookStore.inventory.forEach((book) =>{
+//     console.log(book)
+//     const li = document.createElement("li");
+//     const h3 = document.createElement("h3");
+//     const pAuthor = document.createElement("p");
+//     const pPrice = document.createElement("p");
+//     const image = document.createElement("img");
+//     const btn = document.createElement("button");
+
+//     h3.textContent = book.title
+//     pAuthor.textContent = book.author
+//     pPrice.textContent = `$${book.price}`
+//     image.src = book.imageUrl
+//     btn.textContent = "Delete"
+
+//     li.classname = "list-li"
+
+//     li.append(h3,pAuthor,pPrice, image, btn)
+//     //book_list.append(li)
+//     document.querySelector("#book_list").append(li)
+
+// })
 // const div = document.querySelector("div")
+
+const renderBookCard = (book) => {
+    console.log(book)
+    const li = document.createElement("li");
+    const h3 = document.createElement("h3");
+    const pAuthor = document.createElement("p");
+    const pPrice = document.createElement("p");
+    const image = document.createElement("img");
+    const btn = document.createElement("button");
+
+    h3.textContent = book.title
+    pAuthor.textContent = book.author
+    pPrice.textContent = `$${book.price}`
+    image.src = book.imageUrl
+    btn.textContent = "Delete"
+    li.classname = "list-li"
+    li.append(h3,pAuthor,pPrice,image,btn)
+    book_list.append(li)
+}
+
+bookStore.inventory.forEach(renderBookCard)
 // div.textContent = "Some Text"
 // div.innerText = "Inner Text"
 
